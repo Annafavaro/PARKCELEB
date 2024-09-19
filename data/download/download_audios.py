@@ -45,21 +45,26 @@ def process_metadata_files(directory):
             if file.endswith('metadata.xlsx'):
                 metadata_file_path = os.path.join(root, file)
                 print(f"Processing metadata file: {metadata_file_path}")
+
+                # Determine the speaker_id as the part of the path before 'metadata.xlsx'
+                parts = metadata_file_path.split('/')
+                # Find the index of 'metadata.xlsx' and get the part before it
+                metadata_index = parts.index('metadata.xlsx')
+                speaker_id = parts[metadata_index - 1]
+
                 df = pd.read_excel(metadata_file_path)
                 links = df['link'].tolist()
-                speaker_id = os.path.basename(directory.rstrip('/'))  # Extract the speaker ID from the directory path
-                print(f"Speaker ID: {speaker_id}")
+
                 for link in links:
                     video_id = extract_video_id(link)
                     if video_id:
-                        # Check if directory already exists
+                        # Define the output directory for this video ID
                         output_dir = os.path.join(root, speaker_id, video_id)
-                        print(output_dir)
-                      #  if not os.path.exists(output_dir):
-                         #   os.makedirs(output_dir)
-                       # download_youtube_content(speaker_id, video_id, link)
-                   # else:
-                     #   print(f"Video ID could not be extracted from {link}")
+                        if not os.path.exists(output_dir):
+                            os.makedirs(output_dir)
+                        download_youtube_content(speaker_id, video_id, link)
+                    else:
+                        print(f"Video ID could not be extracted from {link}")
 
 # Process all metadata files in PD and CN directories
 for root_directory in root_directories:
@@ -68,3 +73,10 @@ for root_directory in root_directories:
 if __name__ == "__main__":
     for root_directory in root_directories:
         process_metadata_files(root_directory)
+
+
+
+
+
+
+
