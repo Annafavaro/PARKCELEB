@@ -15,7 +15,7 @@ Numerous studies proposed methods to detect Parkinson’s Disease (PD) via speec
 - **Early Detection:** Identify early dysarthria patterns and evaluate their effectiveness in predicting PD.
 - **Model Evaluation:** Assess machine learning models for classification performance with AUC metrics.
 
-## Dataset: ParkCeleb :dizzy:
+## ParkCeleb :dizzy:
 
 The dataset used in this project consists of:
 
