@@ -1,14 +1,8 @@
 import os
+import sys
 import subprocess
 import pandas as pd
 from urllib.parse import urlparse, parse_qs
-
-# Root directories for PD and CN
-root_directories = [
-    '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/',
-    '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/CN/'
-]
-
 
 def extract_video_id(youtube_url):
     parsed_url = urlparse(youtube_url)
@@ -16,7 +10,6 @@ def extract_video_id(youtube_url):
     if video_id:
         return video_id[0]
     return None
-
 
 # Function to download audio from YouTube
 def download_youtube_content(base_output_path, video_id, youtube_url):
@@ -72,8 +65,19 @@ def process_metadata_files(directory):
                     else:
                         print(f"Video ID could not be extracted from {link}")
 
-
-# Process all metadata files in PD and CN directories
+# Main script execution
 if __name__ == "__main__":
-    for root_directory in root_directories:
-        process_metadata_files(root_directory)
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <root_directory>")
+        sys.exit(1)
+
+    root_directory = sys.argv[1]
+
+    # Directories to traverse
+    subdirectories = ['PD', 'CN']
+    for subdir in subdirectories:
+        subdir_path = os.path.join(root_directory, subdir)
+        if os.path.exists(subdir_path):
+            process_metadata_files(subdir_path)
+        else:
+            print(f"Directory does not exist: {subdir_path}")
