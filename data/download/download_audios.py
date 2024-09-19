@@ -6,7 +6,7 @@ from urllib.parse import urlparse, parse_qs
 # Root directories for PD and CN
 root_directories = [
     '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/',
-  #  '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/CN/'
+    '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/CN/'
 ]
 
 def extract_video_id(youtube_url):
@@ -17,17 +17,17 @@ def extract_video_id(youtube_url):
     return None
 
 # Function to download audio from YouTube
-def download_youtube_content(video_id, youtube_url):
+def download_youtube_content(speaker_id, video_id, youtube_url):
     # Define the output directory for this video ID
-    output_dir = os.path.join(base_output_path, video_id)
-    os.makedirs(output_dir, exist_ok=True)
+    base_output_path = os.path.join(root_directory, speaker_id, video_id)
+    os.makedirs(base_output_path, exist_ok=True)
 
     # Define the yt-dlp command
     yt_dlp_command = [
         'yt-dlp', '--retries', '5', '--no-check-certificate',
         '--extract-audio', '--audio-format', 'wav',
         '--output-na-placeholder', 'not_available',
-        '-o', os.path.join(output_dir, '%(id)s.%(ext)s'),
+        '-o', os.path.join(base_output_path, '%(id)s.%(ext)s'),
         youtube_url
     ]
 
@@ -42,22 +42,20 @@ def download_youtube_content(video_id, youtube_url):
 def process_metadata_files(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
-            print(file)
             if file.endswith('metadata.xlsx'):
                 metadata_file_path = os.path.join(root, file)
                 print(f"Processing metadata file: {metadata_file_path}")
-                df = pd.read_excel(metadata_file_path)  # or pd.read_csv(metadata_file_path) if CSV
+                df = pd.read_excel(metadata_file_path)
                 links = df['link'].tolist()
+                speaker_id = os.path.basename(directory.rstrip('/'))  # Extract the speaker ID from the directory path
                 for link in links:
                     video_id = extract_video_id(link)
                     if video_id:
-                        # Define the base path for storing downloaded files
-                        base_output_path = os.path.join(directory, video_id)
-                        print(base_output_path)
                         # Check if directory already exists
-                        if not os.path.exists(base_output_path):
-                            os.makedirs(base_output_path)
-                        download_youtube_content(video_id, link)
+                        output_dir = os.path.join(root, speaker_id, video_id)
+                        if not os.path.exists(output_dir):
+                            os.makedirs(output_dir)
+                        download_youtube_content(speaker_id, video_id, link)
                     else:
                         print(f"Video ID could not be extracted from {link}")
 
