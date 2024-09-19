@@ -42,6 +42,7 @@ def download_youtube_content(video_id, youtube_url):
 def process_metadata_files(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
+            print(file)
             if file.endswith('metadata.xlsx'):
                 metadata_file_path = os.path.join(root, file)
                 print(f"Processing metadata file: {metadata_file_path}")
