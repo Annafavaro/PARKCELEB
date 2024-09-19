@@ -43,8 +43,8 @@ To set up the project locally, follow these steps:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/early-signs-parkinsons-disease.git
-   cd early-signs-parkinsons-disease
+   git clone https://github.com/yourusername/early-signs-parkinsons-disease.git](https://github.com/Annafavaro/PARKCELEB.git
+   cd PARKCELEB
    ```
 
 2. **Install Dependencies:**
