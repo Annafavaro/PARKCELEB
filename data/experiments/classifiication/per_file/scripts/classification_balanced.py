@@ -1,25 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
-import pdb
-import sys
-sys.path.append("/export/b17/afavaro/youtube_video_2/youtube/")
 from Experiments.Classification.after_diagnosis.PCA_PLDA_EER_Classifier import PCA_PLDA_EER_Classifier
 from statistics import mode
 import random
 import pandas as pd
 import numpy as np
-from sklearn.utils import shuffle
 import os
-import sys
-from pathlib import Path
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 random_state = 20
 random_seed = 20
-#np.random.seed(20)
+np.random.seed(20)
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
-
-path_save_df = '/export/b16/afavaro/PARKCELEB/compute_stats/'
+test_only = 0
 
 def intersection(lst1, lst2):
     lst3 = [value for value in lst1 if value in lst2]
@@ -62,17 +55,11 @@ feats_names = ['xvector', 'trillsson', 'hubert', 'wav2vec', 'whisper']
 for feat_name in feats_names:
     print(f"Experiments with {feat_name}")
 
-    feat_pth_pd= f'/export/b16/afavaro/PARKCELEB/experiments_english3/experiments_15_ms/feats/after_5/{feat_name}/PD/'
-    feat_pth_cn= f'/export/b16/afavaro/PARKCELEB/experiments_english3/experiments_15_ms/feats/after_5/{feat_name}/CN/'
-    out_path= '/export/b16/afavaro/PARKCELEB/experiments_english3/experiments_15_ms/results/after_5/'
-    #feat_pth_pd = f'/export/b16/afavaro/PARKCELEB/experiments_english3/feats/after/5_years/{feat_name}/PD/'
-    #feat_pth_cn = f'/export/b16/afavaro/PARKCELEB/experiments_english3/feats/after/5_years/{feat_name}/CN/'
-    #out_path = '/export/b16/afavaro/PARKCELEB/experiments_english3/results/after/5_years/'
-#
-   # test_only = 0
+    feat_pth_pd = f'/export/b16/afavaro/PARKCELEB/experiments_english/{feat_name}/PD/' ## Path to the directory containing the embeddings or feature files for the PD group.
+    feat_pth_cn = f'/export/b16/afavaro/PARKCELEB/experiments_english/{feat_name}/CN/' # Path to the directory containing the embeddings or feature files for the CN group.
+    out_path = '/export/b16/afavaro/PARKCELEB/experiments_english/after_5/' # Path to the directory where the results of the experiments will be saved.
 
     path_files_pd = [os.path.join(feat_pth_pd, elem) for elem in sorted(os.listdir(feat_pth_pd)) if "concatenated" not in elem]
-   # print(path_files_pd[:1])
     names_pd = [os.path.basename(elem).split("_")[0] + "_" +  os.path.basename(elem).split("_")[1] for elem in path_files_pd]
     # add labels --> 0 for PD
     labels_pd = [0]*len(path_files_pd)
@@ -81,7 +68,6 @@ for feat_name in feats_names:
 
     #if you want to remove the recordings that are concatenated
     path_files_cn = [os.path.join(feat_pth_cn, elem) for elem in sorted(os.listdir(feat_pth_cn)) if "concatenated" not in elem]
-    #print(path_files_cn[:1])
     names_cn = [os.path.basename(elem).split("_")[0] + "_" +  os.path.basename(elem).split("_")[1] for elem in path_files_cn]
     # add labels --> 0 for CN
     labels_cn = [1]*len(path_files_cn)
@@ -90,11 +76,8 @@ for feat_name in feats_names:
     list_names_pd = df_pd['names'].tolist()
     list_names_cn = df_cn['names'].tolist()
     intersection_speakers = sorted(list(set(intersection(list_names_pd, list_names_cn))))
-   # print(len(intersection_speakers))
-   # print(intersection_speakers)
 
     spain = pd.DataFrame()
-    ## keep only common speakers
     for name in intersection_speakers:
         gr_pd = df_pd.groupby("names").get_group(name)
         gr_cn = df_cn.groupby("names").get_group(name)
@@ -107,7 +90,6 @@ for feat_name in feats_names:
         spain = spain.append(gr_cn, ignore_index=True)
         spain = spain.append(gr_pd, ignore_index=True)
 
-    spain.to_csv(os.path.join(path_save_df, "after_5.csv"))
     arrayOfSpeaker_cn = sorted(list(set(spain.groupby('labels').get_group(1)['names'].tolist())))
     random.Random(random_seed).shuffle(arrayOfSpeaker_cn)
     #
@@ -159,39 +141,32 @@ for feat_name in feats_names:
     data_train_10 = np.concatenate(folds[9:] + folds[:8])
     data_test_10 = np.concatenate(folds[8:9])
 
-
-  #      # inner folds cross-validation - hyperparameter search
-  #  #if test_only == 0:
-  #  #    best_params = []
-  #  #    for i in range(1, 11):
-  #  #        print(i)
-  #  #        normalized_train_X, normalized_test_X, y_train, y_test = normalize(eval(f"data_train_{i}"),
-  #  #                                                                           eval(f"data_test_{i}"))
-  #  #        # %
-  #  #        tuned_params = {"PCA_n": [100, 200, 300, 400, 500]}
-  #  #        #tuned_params = {"PCA_n": [500]}
-  #  #        model = PCA_PLDA_EER_Classifier(normalize=0)
-  #  #        cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
-  #  #        grid_search = GridSearchCV(estimator=model, param_grid=tuned_params, n_jobs=-1, cv=cv, scoring='accuracy',
-  #  #                                   error_score=0)
-  #  #        grid_result = grid_search.fit(normalized_train_X, y_train)
-  #  #        # summarize result
-  #  #        # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-  #  #        print(grid_result.best_params_)
-  #  #        means = grid_result.cv_results_['mean_test_score']
-  #  #        stds = grid_result.cv_results_['std_test_score']
-  #  #        params = grid_result.cv_results_['params']
-  #  #        print(means)
-  #  #        best_params.append(grid_result.best_params_['PCA_n'])
-  #  #    # get best params
-  #  #    print('**********best pca n:')
-  #  #    best_param = mode(best_params)
-  #  #    print(best_param)
-
-    if feat_name == "whisper":
-        best_param = 300
-    else:
-        best_param = 500
+    if test_only == 0:
+        best_params = []
+        for i in range(1, 11):
+            print(i)
+            normalized_train_X, normalized_test_X, y_train, y_test = normalize(eval(f"data_train_{i}"),
+                                                                               eval(f"data_test_{i}"))
+            # %
+            tuned_params = {"PCA_n": [20, 30, 40, 60, 70, 80, 100, 200, 300, 400, 500]}
+            #tuned_params = {"PCA_n": [500]}
+            model = PCA_PLDA_EER_Classifier(normalize=0)
+            cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
+            grid_search = GridSearchCV(estimator=model, param_grid=tuned_params, n_jobs=-1, cv=cv, scoring='accuracy',
+                                       error_score=0)
+            grid_result = grid_search.fit(normalized_train_X, y_train)
+            # summarize result
+            # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+            print(grid_result.best_params_)
+            means = grid_result.cv_results_['mean_test_score']
+            stds = grid_result.cv_results_['std_test_score']
+            params = grid_result.cv_results_['params']
+            print(means)
+            best_params.append(grid_result.best_params_['PCA_n'])
+        # get best params
+        print('**********best pca n:')
+        best_param = mode(best_params)
+        print(best_param)
 
     # outer folds testing
     predictions = []

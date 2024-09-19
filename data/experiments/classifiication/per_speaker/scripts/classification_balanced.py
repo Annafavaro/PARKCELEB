@@ -1,25 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import sys
-sys.path.append("/export/b17/afavaro/youtube_video_2/youtube/")
 from Experiments.Classification.after_diagnosis.PCA_PLDA_EER_Classifier import PCA_PLDA_EER_Classifier
 from statistics import mode
 import random
 import pandas as pd
 import numpy as np
-from sklearn.utils import shuffle
 import os
-import sys
-from pathlib import Path
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 random_state = 20
 random_seed = 20
-#np.random.seed(20)
+np.random.seed(20)
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
-
-path_save_df = '/export/c01/afavaro/ParkCeleb_submission/df_experiments/df_experiments_review/'
+test_only = 0
 
 def intersection(lst1, lst2):
     lst3 = [value for value in lst1 if value in lst2]
@@ -65,26 +59,21 @@ for feat_name in feats_names:
     feat_pth_pd = f'/export/c01/afavaro/ParkCeleb_submission/feats/after/five_years/{feat_name}/PD/'
     feat_pth_cn= f'/export/c01/afavaro/ParkCeleb_submission/feats/after/five_years/{feat_name}/CN/'
     out_path = '/export/c01/afavaro/ParkCeleb_submission/results_average_embeddings/mono/after_5/'
-   # print(f"The output directory exists--> {os.path.isdir(out_path_scores)}")
-   # test_only = 0
 
     path_files_pd = [os.path.join(feat_pth_pd, elem) for elem in sorted(os.listdir(feat_pth_pd)) if "concatenated" not in elem]
-   # print(path_files_pd[:1])
     names_pd = [os.path.basename(elem).split("_")[0] + "_" +  os.path.basename(elem).split("_")[1] for elem in path_files_pd]
-    # add labels --> 0 for PD
     labels_pd = [0]*len(path_files_pd)
     df_pd = pd.DataFrame(list(zip(names_pd, path_files_pd, labels_pd)),
                    columns =['names', 'path_feat', 'labels'])
 
     #if you want to remove the recordings that are concatenated
     path_files_cn = [os.path.join(feat_pth_cn, elem) for elem in sorted(os.listdir(feat_pth_cn)) if "concatenated" not in elem]
-    #print(path_files_cn[:1])
     names_cn = [os.path.basename(elem).split("_")[0] + "_" +  os.path.basename(elem).split("_")[1] for elem in path_files_cn]
     # add labels --> 0 for CN
     labels_cn = [1]*len(path_files_cn)
     df_cn = pd.DataFrame(list(zip(names_cn, path_files_cn, labels_cn)),columns = ['names', 'path_feat', 'labels'])
 
-    df_stats = pd.read_excel('/export/b17/afavaro/data/ParkCelebControls/People_without_Parkinsons_english.xlsx')
+    df_stats = pd.read_excel('/export/b17/afavaro/data/ParkCelebControls/People_without_Parkinsons_english.xlsx') ## path to metadata.
     cn_names = [elem.replace(" ", "_") for elem in df_stats['Name'].tolist()]
     print("names grid save are:")
     print(len(cn_names))
@@ -107,8 +96,6 @@ for feat_name in feats_names:
             spain = pd.concat([spain, gr_cn], ignore_index=True)
             spain = pd.concat([spain, gr_pd], ignore_index=True)
 
-
-    spain.to_csv(os.path.join(path_save_df, "balanced_after_5.csv"))
     arrayOfSpeaker_cn = sorted(list(set(spain.groupby('labels').get_group(1)['names'].tolist())))
     random.Random(random_seed).shuffle(arrayOfSpeaker_cn)
     #
@@ -128,7 +115,6 @@ for feat_name in feats_names:
     for cn_sp, pd_sp in zip(sorted(cn_sps, key=len), sorted(pd_sps, key=len, reverse=True)):
         data.append(cn_sp + pd_sp)
     n_folds = sorted(data, key=len, reverse=True)
-    #print(n_folds)
 
     folds = []
     for fold in n_folds:
@@ -170,37 +156,31 @@ for feat_name in feats_names:
     data_test_10 = np.concatenate(folds[8:9])
 
     #      # inner folds cross-validation - hyperparameter search
-  #  #if test_only == 0:
-  #  #    best_params = []
-  #  #    for i in range(1, 11):
-  #  #        print(i)
-  #  #        normalized_train_X, normalized_test_X, y_train, y_test = normalize(eval(f"data_train_{i}"),
-  #  #                                                                           eval(f"data_test_{i}"))
-  #  #        # %
-  #  #        tuned_params = {"PCA_n": [100, 200, 300, 400, 500]}
-  #  #        #tuned_params = {"PCA_n": [500]}
-  #  #        model = PCA_PLDA_EER_Classifier(normalize=0)
-  #  #        cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
-  #  #        grid_search = GridSearchCV(estimator=model, param_grid=tuned_params, n_jobs=-1, cv=cv, scoring='accuracy',
-  #  #                                   error_score=0)
-  #  #        grid_result = grid_search.fit(normalized_train_X, y_train)
-  #  #        # summarize result
-  #  #        # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-  #  #        print(grid_result.best_params_)
-  #  #        means = grid_result.cv_results_['mean_test_score']
-  #  #        stds = grid_result.cv_results_['std_test_score']
-  #  #        params = grid_result.cv_results_['params']
-  #  #        print(means)
-  #  #        best_params.append(grid_result.best_params_['PCA_n'])
-  #  #    # get best params
-  #  #    print('**********best pca n:')
-  #  #    best_param = mode(best_params)
-  #  #    print(best_param)
-
-    if feat_name == "whisper":
-        best_param=40
-    else:
-        best_param = 40
+    if test_only == 0:
+        best_params = []
+        for i in range(1, 11):
+            print(i)
+            normalized_train_X, normalized_test_X, y_train, y_test = normalize(eval(f"data_train_{i}"),
+                                                                               eval(f"data_test_{i}"))
+            # %
+            tuned_params = {"PCA_n": [20, 30, 40, 60, 70, 80, 100, 200, 300, 400, 500]}
+            model = PCA_PLDA_EER_Classifier(normalize=0)
+            cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
+            grid_search = GridSearchCV(estimator=model, param_grid=tuned_params, n_jobs=-1, cv=cv, scoring='accuracy',
+                                       error_score=0)
+            grid_result = grid_search.fit(normalized_train_X, y_train)
+            # summarize result
+            # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+            print(grid_result.best_params_)
+            means = grid_result.cv_results_['mean_test_score']
+            stds = grid_result.cv_results_['std_test_score']
+            params = grid_result.cv_results_['params']
+            print(means)
+            best_params.append(grid_result.best_params_['PCA_n'])
+        # get best params
+        print('**********best pca n:')
+        best_param = mode(best_params)
+        print(best_param)
 
     # outer folds testing
     thresholds = []
@@ -221,10 +201,7 @@ for feat_name in feats_names:
         print(classification_report(y_test, grid_predictions, output_dict=False))
         test_scores += grid_test_scores[:, 0].tolist()
         thresholds = thresholds + [model.eer_threshold]*len(y_test)
-        #print(len(y_test))
-        #print(len(thresholds))
-        #print(thresholds[:10])
-        #print(test_scores)
+
     # report
     print()
     print('----------')
