@@ -51,7 +51,7 @@ def process_metadata_files(directory):
                 # Find the index of 'metadata.xlsx' and get the part before it
                 metadata_index = parts.index('metadata.xlsx')
                 speaker_id = parts[metadata_index - 1]
-
+                print(speaker_id)
                 df = pd.read_excel(metadata_file_path)
                 links = df['link'].tolist()
 
@@ -60,9 +60,10 @@ def process_metadata_files(directory):
                     if video_id:
                         # Define the output directory for this video ID
                         output_dir = os.path.join(root, speaker_id, video_id)
+                        print(output_dir)
                         if not os.path.exists(output_dir):
                             os.makedirs(output_dir)
-                        download_youtube_content(speaker_id, video_id, link)
+                       # download_youtube_content(speaker_id, video_id, link)
                     else:
                         print(f"Video ID could not be extracted from {link}")
 
