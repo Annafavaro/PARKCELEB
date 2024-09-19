@@ -7,8 +7,6 @@ from urllib.parse import urlparse, parse_qs
 metadata_file_path = '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/pd_37/metadata.xlsx'  # Update with your path
 # Base path for storing downloaded files
 base_output_path = '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/'
-
-
 # Function to extract video ID from YouTube URL
 def extract_video_id(youtube_url):
     parsed_url = urlparse(youtube_url)
@@ -17,11 +15,10 @@ def extract_video_id(youtube_url):
         return video_id[0]
     return None
 
-
 # Function to download audio from YouTube
-def download_youtube_content(speaker_folder, video_id, youtube_url):
-    # Define the output directory for this video ID inside the speaker's folder
-    output_dir = os.path.join(base_output_path, speaker_folder, video_id)
+def download_youtube_content(video_id, youtube_url):
+    # Define the output directory for this video ID
+    output_dir = os.path.join(base_output_path, video_id)
     os.makedirs(output_dir, exist_ok=True)
 
     # Define the yt-dlp command
@@ -40,7 +37,6 @@ def download_youtube_content(speaker_folder, video_id, youtube_url):
     except subprocess.CalledProcessError as e:
         print(f"Failed to download {youtube_url}: {e}")
 
-
 # Read the metadata file and process each entry
 def process_metadata(metadata_file_path):
     df = pd.read_excel(metadata_file_path)  # or pd.read_csv(metadata_file_path) if CSV
@@ -48,12 +44,11 @@ def process_metadata(metadata_file_path):
     # Iterate through each row in the DataFrame
     for _, row in df.iterrows():
         youtube_url = row.get('LINK')
-        speaker_folder = row.get('SPEAKER')  # Assume there is a column for speaker folders
 
-        if pd.notna(youtube_url) and pd.notna(speaker_folder):
+        if pd.notna(youtube_url):
             video_id = extract_video_id(youtube_url)
             if video_id:
-                download_youtube_content(speaker_folder, video_id, youtube_url)
+                download_youtube_content(video_id, youtube_url)
             else:
                 print(f"Video ID could not be extracted from {youtube_url}")
 
