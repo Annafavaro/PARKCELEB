@@ -2,7 +2,7 @@
 
 ## Overview 
 
-This project investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. The focus is on creating and utilizing a new corpus, ParkCeleb, which includes longitudinal speech data collected from 40 subjects with PD and 40 controls. By analyzing speech features over a period from 10 years before to 20 years after diagnosis, the project aims to uncover patterns indicative of early PD progression.
+This work investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. The focus is creating and utilizing a new corpus, ParkCeleb, which includes longitudinal speech data collected from 40 subjects with PD and 40 controls. By analyzing speech features from 10 years before to 20 years after diagnosis, we aim to uncover patterns indicative of early PD progression.
 
 ## Objectives
 
@@ -67,26 +67,14 @@ To set up the project locally, follow these steps:
 
 2. **Extract Features:**
 
-   Run the feature extraction script:
+   The scripts to extract the acoustic interpretable and non-interpretable features are located in:
 
-   ```bash
-   python extract_features.py
+   ```
+   PARKCELEB/features/interpretable_features 
    ```
 
-3. **Train and Evaluate Models:**
-
-   Execute the model training and evaluation:
-
-   ```bash
-   python train_model.py
    ```
-
-4. **Analyze Results:**
-
-   Perform longitudinal analysis and view results:
-
-   ```bash
-   python analyze_results.py
+   PARKCELEB/features/non_interpretable_features
    ```
 
 ## Contributing
