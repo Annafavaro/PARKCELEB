@@ -4,9 +4,10 @@ import pandas as pd
 from urllib.parse import urlparse, parse_qs
 
 # Path to the metadata file
-metadata_file_path = '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/pd_37/metadata.xlsx'  # Update with your path
+metadata_file_path = '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/pd_37/metadata.xlsx'
 # Base path for storing downloaded files
-base_output_path = '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/'
+base_output_path = '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/pd_37/'
+
 # Function to extract video ID from YouTube URL
 def extract_video_id(youtube_url):
     parsed_url = urlparse(youtube_url)
@@ -14,6 +15,7 @@ def extract_video_id(youtube_url):
     if video_id:
         return video_id[0]
     return None
+
 
 # Function to download audio from YouTube
 def download_youtube_content(video_id, youtube_url):
@@ -37,17 +39,25 @@ def download_youtube_content(video_id, youtube_url):
     except subprocess.CalledProcessError as e:
         print(f"Failed to download {youtube_url}: {e}")
 
+
 # Read the metadata file and process each entry
 def process_metadata(metadata_file_path):
     df = pd.read_excel(metadata_file_path)  # or pd.read_csv(metadata_file_path) if CSV
-    links = df['link'].tolist()
-    for link in links:
-        video_id = extract_video_id(link)
-        print(f'Processing {video_id}')
-        if video_id:
-            download_youtube_content(video_id, link)
-        else:
-            print(f"Video ID could not be extracted from {link}")
+
+    # Iterate through each row in the DataFrame
+    for _, row in df.iterrows():
+        youtube_url = row.get('LINK')
+
+        if pd.notna(youtube_url):
+            video_id = extract_video_id(youtube_url)
+            if video_id:
+                # Check if directory already exists
+                output_dir = os.path.join(base_output_path, video_id)
+                if not os.path.exists(output_dir):
+                    os.makedirs(output_dir)
+                download_youtube_content(video_id, youtube_url)
+            else:
+                print(f"Video ID could not be extracted from {youtube_url}")
 
 
 if __name__ == "__main__":
