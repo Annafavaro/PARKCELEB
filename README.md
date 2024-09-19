@@ -1,6 +1,6 @@
 # Unveiling Early Signs of Parkinson’s Disease via A Longitudinal Analysis of Celebrity Speech Recordings 
 
-## Project Overview
+## Overview
 
 This project investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. The focus is on creating and utilizing a new corpus, ParkCeleb, which includes longitudinal speech data collected from 40 subjects with PD and 40 controls. By analyzing speech features over a period from 10 years before to 20 years after diagnosis, the project aims to uncover patterns indicative of early PD progression.
 
