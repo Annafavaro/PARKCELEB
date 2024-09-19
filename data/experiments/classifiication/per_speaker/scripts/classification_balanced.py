@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-
 from Experiments.Classification.after_diagnosis.PCA_PLDA_EER_Classifier import PCA_PLDA_EER_Classifier
 from statistics import mode
 import random
@@ -73,7 +72,7 @@ for feat_name in feats_names:
     labels_cn = [1]*len(path_files_cn)
     df_cn = pd.DataFrame(list(zip(names_cn, path_files_cn, labels_cn)),columns = ['names', 'path_feat', 'labels'])
 
-    df_stats = pd.read_excel('/export/b17/afavaro/data/ParkCelebControls/People_without_Parkinsons_english.xlsx') ## path to metadata.
+    df_stats = pd.read_excel('speakes_pairs.xlsx') ## path to speakers_pairs containing the pairs for classification
     cn_names = [elem.replace(" ", "_") for elem in df_stats['Name'].tolist()]
     print("names grid save are:")
     print(len(cn_names))
