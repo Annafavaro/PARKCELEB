@@ -23,8 +23,7 @@ def download_youtube_content(base_output_path, video_id, youtube_url):
         '--extract-audio', '--audio-format', 'wav',
         '--output-na-placeholder', 'not_available',
         '-o', os.path.join(output_dir, '%(id)s.%(ext)s'),
-        youtube_url
-    ]
+        youtube_url]
 
     # Run the command
     try:
