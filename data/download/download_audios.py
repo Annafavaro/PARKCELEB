@@ -48,6 +48,7 @@ def process_metadata_files(directory):
                 df = pd.read_excel(metadata_file_path)
                 links = df['link'].tolist()
                 speaker_id = os.path.basename(directory.rstrip('/'))  # Extract the speaker ID from the directory path
+                print(f"Speaker ID: {speaker_id}")
                 for link in links:
                     video_id = extract_video_id(link)
                     if video_id:
