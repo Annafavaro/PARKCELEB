@@ -53,6 +53,7 @@ def process_metadata_files(directory):
                     if video_id:
                         # Define the base path for storing downloaded files
                         base_output_path = os.path.join(directory, video_id)
+                        print(base_output_path)
                         # Check if directory already exists
                         if not os.path.exists(base_output_path):
                             os.makedirs(base_output_path)
