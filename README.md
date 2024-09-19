@@ -1,6 +1,6 @@
-# :star: :dizzy: Unveiling Early Signs of Parkinson’s Disease via A Longitudinal Analysis of Celebrity Speech Recordings :star: :dizzy:
+# :star: :dizzy: PARKCELEB :star: :dizzy:
 
-## Overview :a_blob_hyper_party:
+## Overview 
 
 This project investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. The focus is on creating and utilizing a new corpus, ParkCeleb, which includes longitudinal speech data collected from 40 subjects with PD and 40 controls. By analyzing speech features over a period from 10 years before to 20 years after diagnosis, the project aims to uncover patterns indicative of early PD progression.
 
@@ -16,6 +16,10 @@ This project investigates the potential for early detection of Parkinson’s Dis
 The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. Below is an explanation of the folder structure and how to work with the provided files to download and process the data.
 
 ### Folder Structure
+
+The main directory has two directories, one for the PD group and one for the control group (CN). Inside this directory, you will also find:
+
+- **`speakers_pairs.xlsx`**: A file containing the paired speakers (CN-PD) for classification and longitudinal analysis.
 
 Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for controls or `pd_01` for Parkinson’s Disease subjects). Inside each speaker's folder, you will find:
 
