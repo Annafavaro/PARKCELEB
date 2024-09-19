@@ -71,7 +71,7 @@ if __name__ == "__main__":
         print("Usage: python script.py <root_directory>")
         sys.exit(1)
 
-    root_directory = sys.argv[1]
+    root_directory = sys.argv[1] #/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/
 
     # Directories to traverse
     subdirectories = ['PD', 'CN']
