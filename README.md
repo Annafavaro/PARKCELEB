@@ -17,18 +17,34 @@ Numerous studies proposed methods to detect Parkinson’s Disease (PD) via speec
 
 ## ParkCeleb :dizzy:
 
-The dataset used in this project consists of:
+The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. Below is an explanation of the folder structure and how to work with the provided files to download and process the data.
 
-- **Speech Recordings:** Videos from 40 subjects with Parkinson’s Disease and 40 controls, spanning 10 years before and 20 years after diagnosis.
-- **Metadata:** Detailed information about each recording session, including speaker identity and diagnosis timeline.
+### Folder Structure
 
-## Methodology
+Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for controls or `pd_01` for Parkinson’s Disease subjects). Inside each speaker's folder, you will find:
 
-1. **Data Collection:** Accumulate longitudinal speech recordings from celebrities with diagnosed Parkinson’s Disease and matched controls.
-2. **Feature Extraction:** Extract and analyze key speech features indicative of PD progression.
-3. **Data Preprocessing:** Clean and organize data for analysis, handling missing values and ensuring consistency.
-4. **Analysis:** Perform longitudinal analysis to identify significant changes in speech features related to Parkinson’s Disease.
-5. **Model Development:** Train and evaluate machine learning classifiers to detect early signs of PD using extracted speech features.
+- **`metadata.csv`**: A file containing YouTube video links for downloading the recordings.
+  
+- **`video_id` folders**: Each folder is named after the YouTube video ID, and inside these folders, you will find:
+  
+  - **Transcripts**: A `.json` file containing word-by-word transcriptions with corresponding word timestamps.
+  
+  - **Speaker Timestamps**: A `.csv` file that contains speaker labels and timestamps for each audio segment, indicating when a given speaker is active.
+  
+  - **`speakers_info.csv`**: A file that contains the diagnosis label (PD or control) and other relevant speaker information.
+
+### Downloading Audio Files
+
+After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
+
+1. Navigate to the project directory.
+2. Run the following script, specifying the root directory of the Zenodo dataset:
+
+```bash
+python data/download/download_audios.py --root_dir path_to_zenodo_directory
+```
+
+This script will use the `metadata.csv` files in each speaker’s folder to download the corresponding YouTube videos as audio files.
 
 ## Installation
 
@@ -78,12 +94,6 @@ To set up the project locally, follow these steps:
    ```bash
    python analyze_results.py
    ```
-
-## Results
-
-- **Feature Analysis:** Insights into key speech features associated with Parkinson’s Disease progression.
-- **Model Performance:** Evaluation of classifiers with AUC scores ranging from 0.72 to 0.93 depending on the time relative to diagnosis.
-- **Early Detection:** Identification of dysarthria patterns detectable in the prodromal phase.
 
 ## Contributing
 
