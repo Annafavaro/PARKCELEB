@@ -1,21 +1,17 @@
-# Unveiling Early Signs of Parkinson’s Disease via A Longitudinal Analysis of Celebrity Speech Recordings 
+# :star: :dizzy: Unveiling Early Signs of Parkinson’s Disease via A Longitudinal Analysis of Celebrity Speech Recordings :star: :dizzy:
 
-## Overview
+## Overview :a_blob_hyper_party:
 
 This project investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. The focus is on creating and utilizing a new corpus, ParkCeleb, which includes longitudinal speech data collected from 40 subjects with PD and 40 controls. By analyzing speech features over a period from 10 years before to 20 years after diagnosis, the project aims to uncover patterns indicative of early PD progression.
-
-## Abstract
-
-Numerous studies proposed methods to detect Parkinson’s Disease (PD) via speech analysis. However, existing corpora often lack prodromal recordings, have small sample sizes, and lack longitudinal data. Speech samples from celebrities who publicly disclosed their PD diagnosis provide longitudinal data, allowing the creation of a new corpus, ParkCeleb. We collected videos from 40 subjects with PD and 40 controls and analyzed evolving speech features from 10 years before to 20 years after diagnosis. Our longitudinal analysis, focused on 15 subjects with PD and 15 controls, revealed features like pitch variability, pause duration, speech rate, and syllable duration, indicating PD progression. Early dysarthria patterns were detectable in the prodromal phase, with the best classifiers achieving AUCs of 0.72 and 0.75 for data collected ten and five years before diagnosis, respectively, and 0.93 post-diagnosis. This study highlights the potential for early detection methods, aiding treatment response identification and screening in clinical trials.
 
 ## Objectives
 
 - **Create ParkCeleb Corpus:** Develop a comprehensive corpus of longitudinal speech recordings from PD subjects and controls.
-- **Feature Extraction:** Analyze evolving speech features such as pitch variability, pause duration, speech rate, and syllable duration.
+- **Feature Extraction and Analysis:** Analyze evolving speech features such as pitch variability, pause duration, speech rate, and syllable duration.
 - **Early Detection:** Identify early dysarthria patterns and evaluate their effectiveness in predicting PD.
-- **Model Evaluation:** Assess machine learning models for classification performance with AUC metrics.
+- **Model Evaluation:** Assess machine learning models for classification performance using data from prodromal and post-diagnosis phases.
 
-## ParkCeleb :dizzy:
+## ParkCeleb
 
 The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. Below is an explanation of the folder structure and how to work with the provided files to download and process the data.
 
@@ -64,12 +60,6 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements.txt
    ```
-
-## Usage
-
-1. **Prepare Data:**
-
-   Place speech recordings and metadata files in the specified directories.
 
 2. **Extract Features:**
 
