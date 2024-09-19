@@ -40,17 +40,14 @@ def download_youtube_content(video_id, youtube_url):
 # Read the metadata file and process each entry
 def process_metadata(metadata_file_path):
     df = pd.read_excel(metadata_file_path)  # or pd.read_csv(metadata_file_path) if CSV
-
-    # Iterate through each row in the DataFrame
-    for _, row in df.iterrows():
-        youtube_url = row.get('LINK')
-
-        if pd.notna(youtube_url):
-            video_id = extract_video_id(youtube_url)
-            if video_id:
-                download_youtube_content(video_id, youtube_url)
-            else:
-                print(f"Video ID could not be extracted from {youtube_url}")
+    links = df['link'].tolist()
+    for link in links:
+        video_id = extract_video_id(link)
+        print(f'Processing {video_id}')
+        if video_id:
+            download_youtube_content(video_id, link)
+        else:
+            print(f"Video ID could not be extracted from {link}")
 
 
 if __name__ == "__main__":
