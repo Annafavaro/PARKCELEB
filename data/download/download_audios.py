@@ -53,11 +53,12 @@ def process_metadata_files(directory):
                     if video_id:
                         # Check if directory already exists
                         output_dir = os.path.join(root, speaker_id, video_id)
-                        if not os.path.exists(output_dir):
-                            os.makedirs(output_dir)
-                        download_youtube_content(speaker_id, video_id, link)
-                    else:
-                        print(f"Video ID could not be extracted from {link}")
+                        print(output_dir)
+                      #  if not os.path.exists(output_dir):
+                         #   os.makedirs(output_dir)
+                       # download_youtube_content(speaker_id, video_id, link)
+                   # else:
+                     #   print(f"Video ID could not be extracted from {link}")
 
 # Process all metadata files in PD and CN directories
 for root_directory in root_directories:
