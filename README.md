@@ -1,34 +1,46 @@
-# Unveiling Early Signs of Parkinson’s Disease via A Longitudinal Analysis of Celebrity Speech Recordings 
+# :star: :dizzy: Unveiling Early Signs of Parkinson’s Disease via A Longitudinal Analysis of Celebrity Speech Recordings :star: :dizzy:
 
-## Project Overview
+## Overview :a_blob_hyper_party:
 
 This project investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. The focus is on creating and utilizing a new corpus, ParkCeleb, which includes longitudinal speech data collected from 40 subjects with PD and 40 controls. By analyzing speech features over a period from 10 years before to 20 years after diagnosis, the project aims to uncover patterns indicative of early PD progression.
-
-## Abstract
-
-Numerous studies proposed methods to detect Parkinson’s Disease (PD) via speech analysis. However, existing corpora often lack prodromal recordings, have small sample sizes, and lack longitudinal data. Speech samples from celebrities who publicly disclosed their PD diagnosis provide longitudinal data, allowing the creation of a new corpus, ParkCeleb. We collected videos from 40 subjects with PD and 40 controls and analyzed evolving speech features from 10 years before to 20 years after diagnosis. Our longitudinal analysis, focused on 15 subjects with PD and 15 controls, revealed features like pitch variability, pause duration, speech rate, and syllable duration, indicating PD progression. Early dysarthria patterns were detectable in the prodromal phase, with the best classifiers achieving AUCs of 0.72 and 0.75 for data collected ten and five years before diagnosis, respectively, and 0.93 post-diagnosis. This study highlights the potential for early detection methods, aiding treatment response identification and screening in clinical trials.
 
 ## Objectives
 
 - **Create ParkCeleb Corpus:** Develop a comprehensive corpus of longitudinal speech recordings from PD subjects and controls.
-- **Feature Extraction:** Analyze evolving speech features such as pitch variability, pause duration, speech rate, and syllable duration.
+- **Feature Extraction and Analysis:** Analyze evolving speech features such as pitch variability, pause duration, speech rate, and syllable duration.
 - **Early Detection:** Identify early dysarthria patterns and evaluate their effectiveness in predicting PD.
-- **Model Evaluation:** Assess machine learning models for classification performance with AUC metrics.
+- **Model Evaluation:** Assess machine learning models for classification performance using data from prodromal and post-diagnosis phases.
 
-## ParkCeleb :dizzy:
+## ParkCeleb
 
-The dataset used in this project consists of:
+The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. Below is an explanation of the folder structure and how to work with the provided files to download and process the data.
 
-- **Speech Recordings:** Videos from 40 subjects with Parkinson’s Disease and 40 controls, spanning 10 years before and 20 years after diagnosis.
-- **Metadata:** Detailed information about each recording session, including speaker identity and diagnosis timeline.
+### Folder Structure
 
-## Methodology
+Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for controls or `pd_01` for Parkinson’s Disease subjects). Inside each speaker's folder, you will find:
 
-1. **Data Collection:** Accumulate longitudinal speech recordings from celebrities with diagnosed Parkinson’s Disease and matched controls.
-2. **Feature Extraction:** Extract and analyze key speech features indicative of PD progression.
-3. **Data Preprocessing:** Clean and organize data for analysis, handling missing values and ensuring consistency.
-4. **Analysis:** Perform longitudinal analysis to identify significant changes in speech features related to Parkinson’s Disease.
-5. **Model Development:** Train and evaluate machine learning classifiers to detect early signs of PD using extracted speech features.
+- **`metadata.csv`**: A file containing YouTube video links for downloading the recordings.
+  
+- **`video_id` folders**: Each folder is named after the YouTube video ID, and inside these folders, you will find:
+  
+  - **Transcripts**: A `.json` file containing word-by-word transcriptions with corresponding word timestamps.
+  
+  - **Speaker Timestamps**: A `.csv` file that contains speaker labels and timestamps for each audio segment, indicating when a given speaker is active.
+  
+  - **`speakers_info.csv`**: A file that contains the diagnosis label (PD or control) and other relevant speaker information.
+
+### Downloading Audio Files
+
+After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
+
+1. Navigate to the project directory.
+2. Run the following script, specifying the root directory of the Zenodo dataset:
+
+```bash
+python data/download/download_audios.py --root_dir path_to_zenodo_directory
+```
+
+This script will use the `metadata.csv` files in each speaker’s folder to download the corresponding YouTube videos as audio files.
 
 ## Installation
 
@@ -48,12 +60,6 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements.txt
    ```
-
-## Usage
-
-1. **Prepare Data:**
-
-   Place speech recordings and metadata files in the specified directories.
 
 2. **Extract Features:**
 
@@ -78,12 +84,6 @@ To set up the project locally, follow these steps:
    ```bash
    python analyze_results.py
    ```
-
-## Results
-
-- **Feature Analysis:** Insights into key speech features associated with Parkinson’s Disease progression.
-- **Model Performance:** Evaluation of classifiers with AUC scores ranging from 0.72 to 0.93 depending on the time relative to diagnosis.
-- **Early Detection:** Identification of dysarthria patterns detectable in the prodromal phase.
 
 ## Contributing
 
