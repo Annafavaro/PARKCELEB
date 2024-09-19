@@ -3,10 +3,11 @@ import subprocess
 import pandas as pd
 from urllib.parse import urlparse, parse_qs
 
-metadata_file_path = '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/pd_37/metadata.xlsx'
-
-# Base path for storing downloaded files
-base_output_path = '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/pd_37/'
+# Root directories for PD and CN
+root_directories = [
+    '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/PD/',
+  #  '/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/CN/'
+]
 
 def extract_video_id(youtube_url):
     parsed_url = urlparse(youtube_url)
@@ -37,21 +38,31 @@ def download_youtube_content(video_id, youtube_url):
     except subprocess.CalledProcessError as e:
         print(f"Failed to download {youtube_url}: {e}")
 
-# Read the metadata file and process each entry
-def process_metadata(metadata_file_path):
-    df = pd.read_excel(metadata_file_path)  # or pd.read_csv(metadata_file_path) if CSV
-    links = df['link'].tolist()
-    for link in links:
-        video_id = extract_video_id(link)
-        if video_id:
-            # Check if directory already exists
-            output_dir = os.path.join(base_output_path, video_id)
-            if not os.path.exists(output_dir):
-                os.makedirs(output_dir)
-            download_youtube_content(video_id, link)
-        else:
-            print(f"Video ID could not be extracted from {link}")
+# Function to process metadata files in a given directory
+def process_metadata_files(directory):
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith('.xlsx') or file.endswith('.csv'):
+                metadata_file_path = os.path.join(root, file)
+                print(f"Processing metadata file: {metadata_file_path}")
+                df = pd.read_excel(metadata_file_path)  # or pd.read_csv(metadata_file_path) if CSV
+                links = df['link'].tolist()
+                for link in links:
+                    video_id = extract_video_id(link)
+                    if video_id:
+                        # Define the base path for storing downloaded files
+                        base_output_path = os.path.join(directory, video_id)
+                        # Check if directory already exists
+                        if not os.path.exists(base_output_path):
+                            os.makedirs(base_output_path)
+                        download_youtube_content(video_id, link)
+                    else:
+                        print(f"Video ID could not be extracted from {link}")
 
+# Process all metadata files in PD and CN directories
+for root_directory in root_directories:
+    process_metadata_files(root_directory)
 
 if __name__ == "__main__":
-    process_metadata(metadata_file_path)
+    for root_directory in root_directories:
+        process_metadata_files(root_directory)
