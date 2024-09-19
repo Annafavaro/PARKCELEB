@@ -42,7 +42,7 @@ def download_youtube_content(video_id, youtube_url):
 def process_metadata_files(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
-            if file.endswith('.xlsx') or file.endswith('.csv'):
+            if file.endswith('metadata.xlsx'):
                 metadata_file_path = os.path.join(root, file)
                 print(f"Processing metadata file: {metadata_file_path}")
                 df = pd.read_excel(metadata_file_path)  # or pd.read_csv(metadata_file_path) if CSV
