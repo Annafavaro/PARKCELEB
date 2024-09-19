@@ -1,10 +1,4 @@
-# PARKCELEB
-
-Great, based on the abstract you provided, here’s a refined GitHub README for the project:
-
----
-
-# Unveiling Early Signs of Parkinson’s Disease via A Longitudinal Analysis of Celebrity Speech Recordings
+# Unveiling Early Signs of Parkinson’s Disease via A Longitudinal Analysis of Celebrity Speech Recordings 
 
 ## Project Overview
 
@@ -21,7 +15,7 @@ Numerous studies proposed methods to detect Parkinson’s Disease (PD) via speec
 - **Early Detection:** Identify early dysarthria patterns and evaluate their effectiveness in predicting PD.
 - **Model Evaluation:** Assess machine learning models for classification performance with AUC metrics.
 
-## Dataset
+## Dataset: ParkCeleb :dizzy:
 
 The dataset used in this project consists of:
 
