@@ -69,7 +69,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python script.py <root_directory>")
         sys.exit(1)
-
+    #script is here: /export/b16/afavaro/parkceleb-publication/PARKCELEB/data/download
     root_directory = sys.argv[1] #/export/fs06/afavaro/parkceleb_zenodo/anonym_trial/
 
     # Directories to traverse
