@@ -20,6 +20,8 @@ The **ParkCeleb** data set is stored in the following [Zenodo repository](link).
 The main directory has two directories, one for the PD group and one for the control group (CN). Inside this directory, you will also find:
 
 - **`speakers_pairs.xlsx`**: A file containing the paired speakers (CN-PD) for classification and longitudinal analysis.
+- **`PD_demo.xlsx`**: A file containing the metadata for the PD group.
+- **`PD_demo.xlsx`**: A file containing the metadata for the control (CN) group.
 
 Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for controls or `pd_01` for Parkinson’s Disease subjects). Inside each speaker's folder, you will find:
 
