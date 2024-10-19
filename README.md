@@ -32,7 +32,7 @@ Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for co
   
   - **Speaker Timestamps**: A `.csv` file that contains speaker labels and timestamps for each audio segment, indicating when a given speaker is active.
   
-  - **`speakers_info.csv`**: A file that contains the diagnosis label (`target` for PD and `non-target` for CN) and indication about how many years before or after diagnosis the video was recorded. Note that this indication was provided for both PD and CNs. In the case of the CN group, the year from diagnosis refers to the year of diagnosis of the matched PD subject.
+  - **`speakers_info.csv`**: A file that contains the diagnosis label (`target` for PD and `non-target` for CN) and an indication about how many years before or after diagnosis the video was recorded. Note that this indication was provided for both PD and CNs. In the case of the CN group, the year from diagnosis refers to the year of diagnosis of the matched PD subject.
 
 ### Downloading Audio Files
 
@@ -54,7 +54,7 @@ To set up the project locally, follow these steps:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/early-signs-parkinsons-disease.git](https://github.com/Annafavaro/PARKCELEB.git
+   git clone https://github.com/Annafavaro/PARKCELEB.git](https://github.com/Annafavaro/PARKCELEB.git
    cd PARKCELEB
    ```
 
