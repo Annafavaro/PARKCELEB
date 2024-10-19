@@ -9,19 +9,6 @@ To overcome these gaps, we created ParkCeleb, a novel speech corpus containing r
 
 The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. The Zenodo repository explains the folder structure.
 
-## Downloading Audio Files
-
-After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
-
-1. Navigate to the project directory.
-2. Run the following script, specifying the root directory of the Zenodo dataset:
-
-```bash
-python data/download/download_audios.py --root_dir path_to_zenodo_directory
-```
-
-This script will use the `metadata.csv` files in each speaker’s folder to download the corresponding YouTube videos as audio files.
-
 ## Installation
 
 To set up the project locally, follow these steps:
@@ -40,8 +27,20 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements.txt
    ```
+3. **Downloading Audio Files**
 
-2. **Extract Features:**
+   After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
+
+   1. Navigate to the project directory.
+   2. Run the following script, specifying the root directory of the Zenodo dataset:
+
+   ```bash
+   python data/download/download_audios.py --root_dir path_to_zenodo_directory
+   ```
+
+   This script will use the `metadata.csv` files in each speaker’s folder to download the corresponding YouTube videos as audio files.
+
+4. **Extract Features:**
 
    The scripts to extract the acoustic interpretable and non-interpretable features are located in:
 
