@@ -45,11 +45,11 @@ To set up the project locally, follow these steps:
    The scripts to extract the acoustic interpretable and non-interpretable features are located in:
 
    ```
-   PARKCELEB/features/interpretable_features 
+   /features/interpretable_features/
    ```
 
    ```
-   PARKCELEB/features/non_interpretable_features
+   /features/non_interpretable_features/
    ```
 ## Citing ParkCeleb
 If you use ParkCeleb in your research, please cite the following publication:
