@@ -5,12 +5,6 @@
 This study explores innovative methods for detecting Parkinson’s disease (PD) through speech analysis, addressing limitations in existing datasets, which often lack prodromal recordings and longitudinal data. 
 To overcome these gaps, we created ParkCeleb, a novel speech corpus containing recordings from 40 celebrities with PD and 40 control subjects. The dataset spans ten years before to twenty years after diagnosis, providing a comprehensive view of evolving speech characteristics.
 
-## Objectives
-
-- **Create ParkCeleb Corpus:** Develop a comprehensive corpus of longitudinal speech recordings from subjects with PD and CNs.
-- **Feature Extraction and Analysis:** Analyze the temporal evolution of speech features such as pitch variability, pause duration, speech rate, and syllable duration.
-- **Model Evaluation:** Assess the effectiveness of machine learning models in PD detection using data from prodromal and post-diagnosis phases.
-
 ## ParkCeleb
 
 The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. Below is an explanation of the folder structure and how to work with the provided files to download and process the data.
