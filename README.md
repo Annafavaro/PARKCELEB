@@ -6,10 +6,9 @@ This work investigates the potential for early detection of Parkinson’s Diseas
 
 ## Objectives
 
-- **Create ParkCeleb Corpus:** Develop a comprehensive corpus of longitudinal speech recordings from PD subjects and controls.
-- **Feature Extraction and Analysis:** Analyze evolving speech features such as pitch variability, pause duration, speech rate, and syllable duration.
-- **Early Detection:** Identify early dysarthria patterns and evaluate their effectiveness in predicting PD.
-- **Model Evaluation:** Assess machine learning models for classification performance using data from prodromal and post-diagnosis phases.
+- **Create ParkCeleb Corpus:** Develop a comprehensive corpus of longitudinal speech recordings from subjects with PD and CNs.
+- **Feature Extraction and Analysis:** Analyze the temporal evolution of speech features such as pitch variability, pause duration, speech rate, and syllable duration.
+- **Model Evaluation:** Assess the effectiveness of machine learning models in PD detection using data from prodromal and post-diagnosis phases.
 
 ## ParkCeleb
 
@@ -17,11 +16,11 @@ The **ParkCeleb** data set is stored in the following [Zenodo repository](link).
 
 ### Folder Structure
 
-The main directory has two directories, one for the PD group and one for the control group (CN). Inside this directory, you will also find:
+The main directory has two directories, one for the PD group and one for the CN group. Inside this directory, you will also find:
 
 - **`speakers_pairs.xlsx`**: A file containing the paired speakers (CN-PD) for classification and longitudinal analysis.
 - **`PD_demo.xlsx`**: A file containing the metadata for the PD group.
-- **`PD_demo.xlsx`**: A file containing the metadata for the control (CN) group.
+- **`CN_demo.xlsx`**: A file containing the metadata for the CN group.
 
 Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for controls or `pd_01` for Parkinson’s Disease subjects). Inside each speaker's folder, you will find:
 
@@ -78,6 +77,15 @@ To set up the project locally, follow these steps:
    ```
    PARKCELEB/features/non_interpretable_features
    ```
+## Citing ParkCeleb
+If you use ParkCeleb in your research, please cite the following publication:
+
+```bibtex
+@article{},
+  title={},
+  author={}
+}
+```
 
 ## Contributing
 
