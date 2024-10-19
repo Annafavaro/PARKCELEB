@@ -2,7 +2,7 @@
 
 ## Overview 
 
-This work investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. The focus is creating and utilizing a new corpus, ParkCeleb, which includes longitudinal speech data collected from 40 subjects with PD and 40 controls. By analyzing speech features from 10 years before to 20 years after diagnosis, we aim to uncover patterns indicative of early PD progression.
+This work investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. This corpus includes longitudinal speech data collected from 40 subjects with PD and 40 controls (CNs). By analyzing speech features from 10 years before to 20 years after diagnosis, we aim to uncover patterns indicative of early PD progression.
 
 ## Objectives
 
@@ -33,7 +33,7 @@ Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for co
   
   - **Speaker Timestamps**: A `.csv` file that contains speaker labels and timestamps for each audio segment, indicating when a given speaker is active.
   
-  - **`speakers_info.csv`**: A file that contains the diagnosis label (PD or control) and other relevant speaker information.
+  - **`speakers_info.csv`**: A file that contains the diagnosis label (`target` for PD and `non-target` for CN) and indication about how many years before or after diagnosis the video was recorded. Note that this indication was provided for both PD and CNs. In the case of the CN group, the year from diagnosis refers to the year of diagnosis of the matched PD subject.
 
 ### Downloading Audio Files
 
