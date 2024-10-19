@@ -2,7 +2,7 @@
 
 ## Overview 
 
-This work investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. Thus, we collected a novel corpus, ParkCeleb, that includes longitudinal speech data collected from 40 subjects with PD and 40 controls (CNs). By analyzing speech features from 10 years before to 20 years after diagnosis, we aim to uncover early speech signs of PD and monitor their evolution as the disease progresses.
+This study explores innovative methods for detecting Parkinson’s disease (PD) through speech analysis, addressing limitations in existing datasets, which often lack prodromal recordings and longitudinal data. To overcome these gaps, we created ParkCeleb, a novel speech corpus using recordings from 40 celebrities with PD and 40 control subjects. The dataset spans a period from 10 years before to 20 years after diagnosis, providing a comprehensive view of evolving speech characteristics.
 
 ## Objectives
 
