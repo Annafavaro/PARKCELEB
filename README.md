@@ -7,7 +7,7 @@ To overcome these gaps, we created ParkCeleb, a novel speech corpus containing r
 
 ## ParkCeleb
 
-The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. Below is an explanation of the folder structure and how to work with the provided files to download and process the data.
+The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. The Zenodo repository explains the folder structure.
 
 ## Downloading Audio Files
 
@@ -68,7 +68,7 @@ Contributions are welcome! If you have suggestions for improvements or encounter
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. Please look at the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
