@@ -2,7 +2,8 @@
 
 ## Overview 
 
-This study explores innovative methods for detecting Parkinson’s disease (PD) through speech analysis, addressing limitations in existing datasets, which often lack prodromal recordings and longitudinal data. To overcome these gaps, we created ParkCeleb, a novel speech corpus using recordings from 40 celebrities with PD and 40 control subjects. The dataset spans a period from 10 years before to 20 years after diagnosis, providing a comprehensive view of evolving speech characteristics.
+This study explores innovative methods for detecting Parkinson’s disease (PD) through speech analysis, addressing limitations in existing datasets, which often lack prodromal recordings and longitudinal data. 
+To overcome these gaps, we created ParkCeleb, a novel speech corpus containing recordings from 40 celebrities with PD and 40 control subjects. The dataset spans ten years before to twenty years after diagnosis, providing a comprehensive view of evolving speech characteristics.
 
 ## Objectives
 
@@ -14,25 +15,34 @@ This study explores innovative methods for detecting Parkinson’s disease (PD) 
 
 The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. Below is an explanation of the folder structure and how to work with the provided files to download and process the data.
 
-### Folder Structure
+## Directory Structure
 
-The main directory has two directories, one for the PD group and one for the CN group. Inside this directory, you will also find:
+### Root Directory
 
-- **`speakers_pairs.xlsx`**: A file containing the paired speakers (CN-PD) for classification and longitudinal analysis.
-- **`PD_demo.xlsx`**: A file containing the metadata for the PD group.
-- **`CN_demo.xlsx`**: A file containing the metadata for the CN group.
+The root directory contains two main subdirectories:
 
-Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for controls or `pd_01` for Parkinson’s Disease subjects). Inside each speaker's folder, you will find:
+- **PD**: Speech data of celebrities diagnosed with Parkinson’s disease.
+- **CN**: Speech data of control subjects.
 
-- **`metadata.csv`**: A file containing YouTube video links for downloading the recordings.
-  
-- **`video_id` folders**: Each folder is named after the YouTube video ID, and inside these folders, you will find:
-  
-  - **Transcripts**: A `.json` file containing word-by-word transcriptions with corresponding word timestamps.
-  
-  - **Speaker Timestamps**: A `.csv` file that contains speaker labels and timestamps for each audio segment, indicating when a given speaker is active.
-  
-  - **`speakers_info.csv`**: A file that contains the diagnosis label (`target` for PD and `non-target` for CN) and an indication about how many years before or after diagnosis the video was recorded. Note that this indication was provided for both PD and CNs. In the case of the CN group, the year from diagnosis refers to the year of diagnosis of the matched PD subject.
+Inside the root directory, you will also find the following key files:
+
+- **speakers_pairs.xlsx**: Contains the pairs of speakers (PD-CN) gender and age-matched used in the classification and longitudinal analysis.
+- **PD_demo.xlsx**: A metadata file with demographic information related to the PD group.
+- **CN_demo.xlsx**: A metadata file with demographic information related to the CN group.
+
+### Speaker Folders
+
+Each speaker is assigned an anonymized folder labeled by their ID, e.g., `cn_xx` for control subjects or `pd_xx` for PD subjects, where `xx` is a number ranging from 01 to 40. Inside each speaker’s folder, you will find a `metadata.csv` file containing YouTube video links for downloading the corresponding recordings.
+
+Each speaker folder also includes subfolders named after the YouTube video ID. Inside these video-specific subfolders, you will find:
+
+- **Transcription File (.json)**: Contains word-by-word transcriptions with corresponding timestamps for each word.
+- **Speaker Timestamps File (.csv)**: Contains speaker labels and timestamps, indicating when each speaker is active during the recording.
+- **Target Speaker Annotation (speakers_info.csv)**:
+  - **Column status**: Identifies the target speaker in the video (whether they are the PD or CN subject).
+  - **Column years_from_diagnosis**: Specifies how many years before or after diagnosis the recording occurred.
+
+For control subjects (CNs), the timeline is matched to the diagnosis year of the corresponding PD subject for comparative purposes.
 
 ### Downloading Audio Files
 
