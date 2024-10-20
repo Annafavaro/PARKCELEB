@@ -66,11 +66,11 @@ If you use ParkCeleb in your research, please cite the following publication:
 
 Contributions are welcome! If you have suggestions for improvements or encounter issues, please open an issue or submit a pull request. Refer to the `CONTRIBUTING.md` file for detailed guidelines.
 
-## License 
+## License 🪪
 
 This project is licensed under the MIT License. Please look at the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Acknowledgments 🛜
 
 - **Data Sources:** The speech data used in this study was sourced from publicly available YouTube videos of celebrities with and without PD. Those with PD voluntarily disclosed their diagnosis in public.
 - **Funding:** This work was partly funded by the Richman Family Precision Medicine Center of Excellence—Venture Discovery Fund and Consolidated Anti-Aging Foundation. The study sponsors did not have any role in the study design, in the collection, analysis, and interpretation of data, in the writing of the manuscript, and in the decision to submit the manuscript for publication.
