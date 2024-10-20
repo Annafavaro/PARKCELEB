@@ -20,14 +20,14 @@ To set up the project locally, follow these steps:
    cd PARKCELEB
    ```
 
-2. **Install Dependencies:**
+2. **Install Dependencies** 👩🏼‍💻
 
    Create a virtual environment and install the required packages:
 
    ```bash
    pip install -r requirements2.txt
    ```
-3. **Downloading Audio Files**
+3. **Downloading Audio Files** 🔊
 
    After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
 
@@ -41,7 +41,7 @@ To set up the project locally, follow these steps:
    ```bash
    python data/download/download_audios.py --root_dir path_to_zenodo_directory
    ```
-4. **Extract Features:**
+4. **Extract Features** ⚙️
 
    The scripts to extract the acoustic interpretable and non-interpretable features are located in:
 
