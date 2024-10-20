@@ -25,7 +25,7 @@ To set up the project locally, follow these steps:
    Create a virtual environment and install the required packages:
 
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirements2.txt
    ```
 3. **Downloading Audio Files**
 
