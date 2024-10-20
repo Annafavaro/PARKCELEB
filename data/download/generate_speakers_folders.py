@@ -4,6 +4,19 @@ import pandas as pd
 from pydub import AudioSegment
 import sys
 def process_audio_files(root_directory):
+    """
+        This function processes audio files and their corresponding CSV files that contain speaker timestamps.
+        It performs the following steps:
+
+        1. Reads the CSV files in the specified directory.
+        2. For each CSV, extracts segments of the corresponding audio file based on the start and end times for each speaker.
+        3. Saves the audio segments into separate folders for each speaker.
+        4. Optionally, concatenates all the segments for a given speaker into a single audio file.
+
+        Parameters:
+        - root_directory: The root directory containing the audio files and corresponding CSV files with speaker timestamps.
+        """
+
     all_files = []
     for path, subdirs, files in os.walk(root_directory):
         print(subdirs)
