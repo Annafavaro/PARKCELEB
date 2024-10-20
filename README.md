@@ -7,7 +7,7 @@ We created *ParkCeleb*, a novel speech corpus containing recordings from 40 cele
 
 ## :star: :dizzy: PARKCELEB :star: :dizzy:
 
-The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repository does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. The Zenodo repository explains the folder structure.
+The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repository does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. 
 
 ## Installation
 
