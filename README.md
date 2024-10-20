@@ -27,26 +27,20 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements2.txt
    ```
-3. **Downloading Audio Files**
+   3. **Downloading Audio Files**
 
-   After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
+      After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
 
-   1. Navigate to the project directory.
-   2. Run the following script, specifying the root directory of the Zenodo dataset:
-
-   ```bash
-   python data/download/download_audios.py --root_dir path_to_zenodo_directory
-   ```
-
-   This script will use the `metadata.csv` files in each speaker’s folder to download the corresponding YouTube videos as audio files.
-   3. For each speaker found in the CSV file containing speaker timestamps, the script ***generate_speakers_folders.py*** creates a separate directory named after the speaker.
-   Inside each speaker's directory, the script saves individual audio segments that correspond to the start and end times specified in the CSV file. These segments are saved as .wav files, with the filename corresponding to the end time of the segment (e.g., 12345.wav).
-   To generate separate directories for each speaker in a given video, containing both individual audio segments and a unique concatenated audio file of all segments from a given video related to a target speaker, run: 
-   
-   ```bash
-      python data/download/generate_speakers_folders.py --root_dir path_to_zenodo_directory
-   ```
-
+      1. Navigate to the project directory.
+      2. Run the command below, specifying the root directory of the Zenodo dataset. This script will use the `metadata.csv` files in each speaker’s folder to download the corresponding YouTube videos as audio files.
+      ```bash
+      python data/download/download_audios.py --root_dir path_to_zenodo_directory
+      ```
+      3. For each speaker found in the CSV file containing speaker timestamps, the script ***generate_speakers_folders.py*** creates a separate directory named after the speaker. Inside each speaker's directory, the script saves individual audio segments that correspond to the start and end times specified in the CSV file. These segments are saved as .wav files, with the filename corresponding to the end time of the segment (e.g., 12345.wav).
+      To generate separate directories for each speaker in a given video, containing both individual audio segments and a unique concatenated audio file of all segments from a given video related to a target speaker, run:
+      ```bash
+      python data/download/download_audios.py --root_dir path_to_zenodo_directory
+      ```
 4. **Extract Features:**
 
    The scripts to extract the acoustic interpretable and non-interpretable features are located in:
