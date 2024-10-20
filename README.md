@@ -1,50 +1,13 @@
-# :star: :dizzy: PARKCELEB :star: :dizzy:
+# Unveiling Early Signs of Parkinson’s Disease via a Longitudinal Analysis of Celebrity Speech Recordings
 
 ## Overview 
 
-This work investigates the potential for early detection of Parkinson’s Disease (PD) through a longitudinal analysis of speech recordings from celebrities who publicly disclosed their diagnosis. The focus is creating and utilizing a new corpus, ParkCeleb, which includes longitudinal speech data collected from 40 subjects with PD and 40 controls. By analyzing speech features from 10 years before to 20 years after diagnosis, we aim to uncover patterns indicative of early PD progression.
+This study explores innovative methods for detecting Parkinson’s disease (PD) through speech analysis, addressing limitations in existing datasets, which often lack prodromal recordings and longitudinal data. 
+We created *ParkCeleb*, a novel speech corpus containing recordings from 40 celebrities with PD and 40 control subjects to overcome these gaps. The dataset spans ten years before to twenty years after diagnosis, providing a comprehensive view of evolving speech characteristics.
 
-## Objectives
+## :star: :dizzy: PARKCELEB :star: :dizzy:
 
-- **Create ParkCeleb Corpus:** Develop a comprehensive corpus of longitudinal speech recordings from PD subjects and controls.
-- **Feature Extraction and Analysis:** Analyze evolving speech features such as pitch variability, pause duration, speech rate, and syllable duration.
-- **Early Detection:** Identify early dysarthria patterns and evaluate their effectiveness in predicting PD.
-- **Model Evaluation:** Assess machine learning models for classification performance using data from prodromal and post-diagnosis phases.
-
-## ParkCeleb
-
-The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. Below is an explanation of the folder structure and how to work with the provided files to download and process the data.
-
-### Folder Structure
-
-The main directory has two directories, one for the PD group and one for the control group (CN). Inside this directory, you will also find:
-
-- **`speakers_pairs.xlsx`**: A file containing the paired speakers (CN-PD) for classification and longitudinal analysis.
-
-Each speaker has an anonymized folder named after their ID (e.g., `cn_01` for controls or `pd_01` for Parkinson’s Disease subjects). Inside each speaker's folder, you will find:
-
-- **`metadata.csv`**: A file containing YouTube video links for downloading the recordings.
-  
-- **`video_id` folders**: Each folder is named after the YouTube video ID, and inside these folders, you will find:
-  
-  - **Transcripts**: A `.json` file containing word-by-word transcriptions with corresponding word timestamps.
-  
-  - **Speaker Timestamps**: A `.csv` file that contains speaker labels and timestamps for each audio segment, indicating when a given speaker is active.
-  
-  - **`speakers_info.csv`**: A file that contains the diagnosis label (PD or control) and other relevant speaker information.
-
-### Downloading Audio Files
-
-After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
-
-1. Navigate to the project directory.
-2. Run the following script, specifying the root directory of the Zenodo dataset:
-
-```bash
-python data/download/download_audios.py --root_dir path_to_zenodo_directory
-```
-
-This script will use the `metadata.csv` files in each speaker’s folder to download the corresponding YouTube videos as audio files.
+The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repo does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. The Zenodo repository explains the folder structure.
 
 ## Installation
 
@@ -53,7 +16,7 @@ To set up the project locally, follow these steps:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/early-signs-parkinsons-disease.git](https://github.com/Annafavaro/PARKCELEB.git
+   git clone https://github.com/Annafavaro/PARKCELEB.git](https://github.com/Annafavaro/PARKCELEB.git
    cd PARKCELEB
    ```
 
@@ -64,18 +27,39 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements.txt
    ```
+3. **Downloading Audio Files**
 
-2. **Extract Features:**
+   After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
+
+   1. Navigate to the project directory.
+   2. Run the following script, specifying the root directory of the Zenodo dataset:
+
+   ```bash
+   python data/download/download_audios.py --root_dir path_to_zenodo_directory
+   ```
+
+   This script will use the `metadata.csv` files in each speaker’s folder to download the corresponding YouTube videos as audio files.
+
+4. **Extract Features:**
 
    The scripts to extract the acoustic interpretable and non-interpretable features are located in:
 
    ```
-   PARKCELEB/features/interpretable_features 
+   /features/interpretable_features/
    ```
 
    ```
-   PARKCELEB/features/non_interpretable_features
+   /features/non_interpretable_features/
    ```
+## Citing ParkCeleb
+If you use ParkCeleb in your research, please cite the following publication:
+
+```bibtex
+@article{},
+  title={},
+  author={}
+}
+```
 
 ## Contributing
 
@@ -83,7 +67,7 @@ Contributions are welcome! If you have suggestions for improvements or encounter
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. Please look at the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
