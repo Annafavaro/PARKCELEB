@@ -36,7 +36,7 @@ To set up the project locally, follow these steps:
       ```bash
       python data/download/download_audios.py --root_dir path_to_zenodo_directory
       ```
-      3. For each speaker found in the CSV file containing speaker timestamps, the script ***generate_speakers_folders.py*** creates a separate directory named after the speaker. Inside each speaker's directory, the script saves individual audio segments that correspond to the start and end times specified in the CSV file. These segments are saved as .wav files, with the filename corresponding to the end time of the segment (e.g., 12345.wav).
+      3. For each speaker found in the CSV file containing speaker timestamps for each video, the script ***generate_speakers_folders.py*** creates a separate directory named after the speaker (e.g., SPEAKER_OO). Inside each speaker's directory, the script saves individual audio segments that correspond to the start and end times specified in the CSV file. These segments are saved as .wav files, with the filename corresponding to the end time of the segment (e.g., 12345.wav).
       To generate separate directories for each speaker in a given video, containing both individual audio segments and a unique concatenated audio file of all segments from a given video related to a target speaker, run:
       ```bash
       python data/download/download_audios.py --root_dir path_to_zenodo_directory
