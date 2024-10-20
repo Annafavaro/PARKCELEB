@@ -72,7 +72,7 @@ This project is licensed under the MIT License. Please look at the [LICENSE](LIC
 
 ## Acknowledgments
 
-- **Data Sources:** The speech data used in this study was sourced from publicly available YouTube videos of celebrities who voluntarily disclosed their Parkinson’s disease diagnosis.
+- **Data Sources:** The speech data used in this study was sourced from publicly available YouTube videos of celebrities with and without PD. Those with PD voluntarily disclosed their diagnosis in public.
 - **Funding:** This work was partly funded by the Richman Family Precision Medicine Center of Excellence—Venture Discovery Fund and Consolidated Anti-Aging Foundation. The study sponsors did not have any role in the study design, in the collection, analysis, and interpretation of data, in the writing of the manuscript, and in the decision to submit the manuscript for publication.
 
 ## Contact
