@@ -41,7 +41,7 @@ To set up the project locally, follow these steps:
    ```bash
    python data/download/generate_speakers_folders.py --root_dir path_to_zenodo_directory
    ```
-## Extract Features
+   4. Extract Features
 
    The scripts to extract the acoustic interpretable and non-interpretable features are located in:
 
