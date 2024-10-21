@@ -27,7 +27,7 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements2.txt
    ```
-## Get Audio Files 
+## Get Audio Files and Features
 
    After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
 
@@ -41,6 +41,7 @@ To set up the project locally, follow these steps:
    ```bash
    python data/download/generate_speakers_folders.py --root_dir path_to_zenodo_directory
    ```
+
    4. Extract Features
 
    The scripts to extract the acoustic interpretable and non-interpretable features are located in:
@@ -68,7 +69,7 @@ Contributions are welcome! If you have suggestions for improvements or encounter
 
 ## License 🪪
 
-This project is licensed under the MIT License. Please look at the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## Acknowledgments 🛜
 
