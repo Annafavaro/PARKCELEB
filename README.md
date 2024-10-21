@@ -5,7 +5,7 @@
 This study explores innovative methods for detecting Parkinson’s disease (PD) through speech analysis, addressing limitations in existing pathological speech corpora, which often lack prodromal recordings and longitudinal data. 
 We created *ParkCeleb*, a novel speech corpus containing recordings from 40 celebrities with PD and 40 control subjects to overcome these gaps. The dataset spans ten years before to twenty years after diagnosis, providing a comprehensive view of evolving speech signs associated to PD.
 
-## 🎙️ParkCeleb 🎙️
+## 🎙️ ParkCeleb 🎙️
 
 The **ParkCeleb** data set is stored in the following [Zenodo repository](link). This repository does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. 
 
@@ -27,7 +27,7 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements2.txt
    ```
-3. **Downloading Audio Files**
+## Downloading Audio Files 
 
    After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
 
@@ -41,7 +41,7 @@ To set up the project locally, follow these steps:
    ```bash
    python data/download/generate_speakers_folders.py --root_dir path_to_zenodo_directory
    ```
-4. **Extract Features** 
+## Extract Features
 
    The scripts to extract the acoustic interpretable and non-interpretable features are located in:
 
