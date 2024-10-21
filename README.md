@@ -27,7 +27,7 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements2.txt
    ```
-## Downloading Audio Files 
+## Get Audio Files 
 
    After downloading the Zenodo repository, you can download the audio files for each speaker using the provided script. The script takes the root Zenodo directory as a parameter, which contains the metadata files with YouTube links. To download the audio files inside each speaker's folder, follow these steps:
 
