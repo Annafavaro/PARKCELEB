@@ -55,9 +55,9 @@ feats_names = ['xvector', 'trillsson', 'hubert', 'wav2vec', 'whisper']
 for feat_name in feats_names:
     print(f"Experiments with {feat_name}")
 
-    feat_pth_pd = f'/export/b16/afavaro/PARKCELEB/experiments_english/{feat_name}/PD/' ## Path to the directory containing the embeddings or feature files for the PD group.
-    feat_pth_cn = f'/export/b16/afavaro/PARKCELEB/experiments_english/{feat_name}/CN/' # Path to the directory containing the embeddings or feature files for the CN group.
-    out_path = '/export/b16/afavaro/PARKCELEB/experiments_english/after_5/' # Path to the directory where the results of the experiments will be saved.
+    feat_pth_pd = f'/{feat_name}/PD/' ## Path to the directory containing the embeddings or feature files for the PD group.
+    feat_pth_cn = f'/{feat_name}/CN/' # Path to the directory containing the embeddings or feature files for the CN group.
+    out_path = '' # Path to the directory where the results of the experiments will be saved.
 
     path_files_pd = [os.path.join(feat_pth_pd, elem) for elem in sorted(os.listdir(feat_pth_pd)) if "concatenated" not in elem]
     names_pd = [os.path.basename(elem).split("_")[0] + "_" +  os.path.basename(elem).split("_")[1] for elem in path_files_pd]

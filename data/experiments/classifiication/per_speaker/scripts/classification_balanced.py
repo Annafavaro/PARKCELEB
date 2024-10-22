@@ -55,9 +55,9 @@ feats_names = ['xvector', 'trillsson', 'hubert', 'wav2vec', 'whisper']
 
 for feat_name in feats_names:
     print(f"Experiments with {feat_name}")
-    feat_pth_pd = f'/export/c01/afavaro/ParkCeleb_submission/feats/after/five_years/{feat_name}/PD/'
-    feat_pth_cn= f'/export/c01/afavaro/ParkCeleb_submission/feats/after/five_years/{feat_name}/CN/'
-    out_path = '/export/c01/afavaro/ParkCeleb_submission/results_average_embeddings/mono/after_5/'
+    feat_pth_pd = f'/{feat_name}/PD/'
+    feat_pth_cn= f'/{feat_name}/CN/'
+    out_path = ''
 
     path_files_pd = [os.path.join(feat_pth_pd, elem) for elem in sorted(os.listdir(feat_pth_pd)) if "concatenated" not in elem]
     names_pd = [os.path.basename(elem).split("_")[0] + "_" +  os.path.basename(elem).split("_")[1] for elem in path_files_pd]
