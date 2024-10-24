@@ -66,6 +66,22 @@ def process_metadata_files(directory):
 
 # Main script execution
 if __name__ == "__main__":
+
+    """
+    This script processes metadata files containing YouTube links, extracts video IDs, and downloads the corresponding audio in WAV format using yt-dlp. 
+    It organizes the audio files into directories based on speaker IDs and video IDs.
+
+    Usage:
+        python script.py <root_directory>
+
+    The script expects subdirectories named 'PD' (Parkinson's Disease) and 'CN' (Control) within the root directory, each containing metadata.xlsx files with YouTube links.
+
+    Functions:
+    - extract_video_id(): Extracts YouTube video ID from a URL.
+    - download_youtube_content(): Downloads audio from YouTube and saves it as a WAV file.
+    - process_metadata_files(): Processes metadata files, downloads audio, and organizes files into speaker-specific folders.
+    """
+
     if len(sys.argv) != 2:
         print("Usage: python script.py <root_directory>")
         sys.exit(1)
