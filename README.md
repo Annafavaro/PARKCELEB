@@ -7,8 +7,8 @@ We created *ParkCeleb*, a novel speech corpus containing recordings from 40 cele
 
 ### 🎙️ ParkCeleb 🎙️
 
-The **ParkCeleb** data set is stored in the following [Zenodo repository](https://zenodo.org/records/13974322). This repository does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. 
-
+The **ParkCeleb** data set is stored in the following [Zenodo repository](https://zenodo.org/uploads/13954768). This repository does not contain the actual audio recordings but provides metadata files with links to YouTube videos, speaker information, and transcriptions. 
+The current GitHub repository is used to download audio files for each speaker, segment the recordings using provided scripts, and extract both interpretable and non-interpretable features. The scripts organize the audio into speaker-specific folders and extract relevant audio segments based on timestamps.
 ## 1. Installation️ 💻 
 
 To set up the project locally, follow these steps:
