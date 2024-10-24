@@ -17,7 +17,7 @@ To set up the project locally, follow these steps:
 
    ```bash
    git clone https://github.com/Annafavaro/PARKCELEB.git](https://github.com/Annafavaro/PARKCELEB.git
-   cd ParkCeleb
+   cd PARKCELEB
    ```
 
 2. **Install Dependencies** 
