@@ -57,9 +57,15 @@ To set up the project locally, follow these steps:
 If you use ParkCeleb in your research, please cite the following publication:
 
 ```bibtex
-@article{},
-  title={},
-  author={}
+@article{favaro2024unveiling,
+  title={Unveiling early signs of Parkinson’s disease via a longitudinal analysis of celebrity speech recordings},
+  author={Favaro, Anna and Butala, Ankur and Thebaud, Thomas and Villalba, Jes{\'u}s and Dehak, Najim and Moro-Vel{\'a}zquez, Laureano},
+  journal={npj Parkinson's Disease},
+  volume={10},
+  number={1},
+  pages={207},
+  year={2024},
+  publisher={Nature Publishing Group UK London}
 }
 ```
 
