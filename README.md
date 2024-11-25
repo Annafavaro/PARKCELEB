@@ -53,6 +53,15 @@ To set up the project locally, follow these steps:
    ```
    /features/non_interpretable_features/
    ```
+
+## ⚠️ Important Note on Video Availability  
+
+Please be aware that some YouTube videos referenced in the **ParkCeleb** metadata may no longer be available, as they have been removed or restricted since the dataset's creation. At the time of compiling **ParkCeleb**, all linked videos were accessible.  
+
+To ensure the quality and consistency of the dataset, we:  
+- **Included only audio segments longer than 8 seconds**, as shorter segments were found to reduce diarization precision.  
+- **Balanced the dataset**, ensuring an equal number of recordings for subjects with Parkinson’s Disease (PD) and control subjects.  
+
 ## Citing ParkCeleb 📖
 If you use ParkCeleb in your research, please cite the following publication:
 
