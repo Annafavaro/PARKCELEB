@@ -77,11 +77,9 @@ selenium==4.5.0
 six==1.16.0
 sniffio==1.3.0
 sortedcontainers==2.4.0
-soupsieve==2.3.2.post1
-soupsieve==2.4.1
+soupsieve
 speechbrain==0.5.13
-stack-data==0.6.2
-stack-data==0.4.0
+stack-data
 terminado==0.15.0
 tinycss2==1.1.1
 tornado>=6.3.2
