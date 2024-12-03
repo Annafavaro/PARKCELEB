@@ -60,13 +60,12 @@ To set up the project locally, follow these steps:
 Some data sources referenced in the metadata may no longer be accessible due to removal, restriction, or geo-blocking. At the time of dataset compilation, all linked resources were fully accessible, but availability may change over time. Please verify accessibility before proceeding with downloads.  
 
 ### Disk Space and File Formats  
-Downloading and processing the dataset can require significant disk space, particularly when handling high-quality audio or video formats. Below is an example of managing disk usage during downloads:  
+Downloading and processing the dataset can require significant disk space, particularly when handling high-quality audio or video formats. Below is an example of managing disk usage during downloads.
 
 - **Compressed Format Downloads:** Utilizing compressed formats such as **Opus** or **AAC/M4A** can significantly reduce disk space requirements. For example:  
   - Downloading files in these formats may result in approximately **13GB of audio files**.  
-  - An additional **9GB** may be required for post-processed concatenated files.  
-
-- **Partial Dataset Constraints:** Issues like geo-blocking and unavailable files can limit the total number of accessible clips. For instance:
+  - An additional **9GB** may be required for post-processed concatenated files.
+- **Partial Dataset Constraints:** Issues like geo-blocking and unavailable files can limit the total number of accessible clips. 
 - **Potential Risks of Compression:** While compression reduces disk usage, there is a minor risk of audio degradation during re-encoding processes (e.g., concatenation). This could slightly impact feature extraction.
 
 ### Recommendations  
