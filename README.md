@@ -54,13 +54,25 @@ To set up the project locally, follow these steps:
    /features/non_interpretable_features/
    ```
 
-## ⚠️ Important Note on Video Availability  
+## ⚠️ Important Note on Data Availability and Disk Space Requirements  
 
-Please be aware that some YouTube videos referenced in the **ParkCeleb** metadata may no longer be available, as they have been removed or restricted since the dataset's creation. At the time of compiling **ParkCeleb**, all linked videos were accessible.  
+### Data Availability  
+Some data sources referenced in the metadata may no longer be accessible due to removal, restriction, or geo-blocking. At the time of dataset compilation, all linked resources were fully accessible, but availability may change over time. Please verify accessibility before proceeding with downloads.  
 
-To ensure the quality and consistency of the dataset, we:  
-- **Included only audio segments longer than 8 seconds**, as shorter segments were found to reduce diarization precision.  
-- **Balanced the dataset**, ensuring an equal number of recordings for subjects with Parkinson’s Disease (PD) and control subjects.  
+### Disk Space and File Formats  
+Downloading and processing the dataset can require significant disk space, particularly when handling high-quality audio or video formats. Below is an example of managing disk usage during downloads:  
+
+- **Compressed Format Downloads:** Utilizing compressed formats such as **Opus** or **AAC/M4A** can significantly reduce disk space requirements. For example:  
+  - Downloading files in these formats may result in approximately **13GB of audio files**.  
+  - An additional **9GB** may be required for post-processed concatenated files.  
+
+- **Partial Dataset Constraints:** Issues like geo-blocking and unavailable files can limit the total number of accessible clips. For instance:
+- **Potential Risks of Compression:** While compression reduces disk usage, there is a minor risk of audio degradation during re-encoding processes (e.g., concatenation). This could slightly impact feature extraction.
+
+### Recommendations  
+1. Allocate **sufficient disk space** based on the anticipated size of the dataset.  
+2. Verify data availability early to account for geo-blocking or other access limitations.  
+3. Consider the trade-off between compression and quality, depending on your project's requirements.  
 
 ## Citing ParkCeleb 📖
 If you use ParkCeleb in your research, please cite the following publication:
