@@ -67,6 +67,7 @@ Downloading and processing the dataset can require significant disk space, parti
   - An additional **9GB** may be required for post-processed concatenated files.
 - **Partial Dataset Constraints:** Issues like geo-blocking and unavailable files can limit the total number of accessible clips. 
 - **Potential Risks of Compression:** While compression reduces disk usage, there is a minor risk of audio degradation during re-encoding processes (e.g., concatenation). This could slightly impact feature extraction.
+- **Dataset Statistics**: The statistics reported in the paper correspond to the portion of the dataset used for analysis, and may not represent the entirety of the original dataset available.
 
 ### Recommendations  
 1. Allocate **sufficient disk space** based on the anticipated size of the dataset.  
