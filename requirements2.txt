@@ -18,7 +18,6 @@ exceptiongroup==1.1.1
 executing==1.2.0
 fastjsonschema==2.16.1
 ffmpeg-python==0.2.0
-future==0.18.3
 h11==0.14.0
 huggingface-hub==0.16.4
 icu==0.0.1
